@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin Party!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: "Comic Sans MS", cursive;
+            animation: strobe 5s infinite;
+        }
+        @keyframes strobe {
+            0% { background-color: red; }
+            14% { background-color: orange; }
+            28% { background-color: yellow; }
+            42% { background-color: green; }
+            57% { background-color: blue; }
+            71% { background-color: indigo; }
+            85% { background-color: violet; }
+            100% { background-color: red; }
+        }
+        .penguin {
+            position: absolute;
+            transition: all 2s ease-in-out;
+            animation: spin 10s linear infinite;
+        }
+        .disco-ball {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            width: 150px;
+            height: 150px;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 3em;
+            margin-top: 160px; /* Increased to make room for disco ball */
+            position: relative;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <img class="disco-ball" src="https://i.gifer.com/XVny.gif" alt="Disco Ball">
+    <h1>PENGUIN</h1>
+    <!-- Original Penguins -->
+    <img class="penguin" src="https://web.archive.org/web/20090724051013/http://au.geocities.com/caseythebigicecube/dancingpenguin.gif" alt="Dancing Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20090804110026/http://www.geocities.com/~dmtgkz/animation/penguin4.gif" alt="Penguin 4">
+    <img class="penguin" src="https://web.archive.org/web/20091027014621/http://www.geocities.com/beamer_berta/penguin_colorchange.gif" alt="Color Changing Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20091019132824/http://www.geocities.com/humansdaughter/penguin.gif" alt="Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20090901164255/http://geocities.com/michelnguyen800/penguin.gif" alt="Michel Nguyen Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20090831043434/http://geocities.com/corporatelinux/penguineyes.gif" alt="Penguin Eyes">
+    <img class="penguin" src="https://web.archive.org/web/20090829040856/http://geocities.com/prncss382/penguin_fly_lg_clr.gif" alt="Flying Penguin">
+    
+    <!-- New Penguins -->
+    <img class="penguin" src="https://web.archive.org/web/20090821222321/http://geocities.com/boarderpatrolpd/Resources/Penguinknockout.gif" alt="Knockout Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20090830040154/http://geocities.com/Heartland/5966/images/penguinpower.gif" alt="Penguin Power">
+    <img class="penguin" src="https://web.archive.org/web/20041214121638/http://www.geocities.com/mystomachisharold/dancingpenguin.gif" alt="Dancing Penguin 2">
+    <img class="penguin" src="https://web.archive.org/web/20091025043119/http://geocities.com/MadisonAvenue/7583/penguin.gif" alt="Madison Avenue Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20090903045704/http://www.geocities.com/poodeepoobytteb/laptoppenguin.gif" alt="Laptop Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20091027110121/http://www.geocities.com/lovebugdani/penguin_type_laptop_lg_nwm.gif" alt="Typing Laptop Penguin">
+    <img class="penguin" src="https://web.archive.org/web/20091027125001/http://geocities.com/nan_barr_44/penguin.gif" alt="Nan Barr Penguin">
+
+    <script>
+        const penguins = document.querySelectorAll('.penguin');
+
+        function moveRandomly(penguin, speed) {
+            const maxX = window.innerWidth - penguin.width;
+            const maxY = window.innerHeight - penguin.height;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            penguin.style.transition = `all ${speed}s ease-in-out`;
+            penguin.style.left = `${randomX}px`;
+            penguin.style.top = `${randomY}px`;
+        }
+
+        penguins.forEach((penguin, index) => {
+            const speed = Math.random() * 3 + 1; // Random speed between 1 and 4 seconds
+            moveRandomly(penguin, speed);
+            setInterval(() => moveRandomly(penguin, speed), speed * 1000);
+        });
+    </script>
+</body>
+</html>
