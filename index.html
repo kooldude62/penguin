@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penguin Party!</title>
-    <link rel="icon" href="https://media.tenor.com/8q_sV6wxpj8AAAAM/silly-penguin.gif" type="image/x-icon">
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            font-family: "Comic Sans MS", cursive;
+            font-family: Arial, sans-serif;
             animation: strobe 5s infinite;
         }
         @keyframes strobe {
@@ -47,14 +46,20 @@
             color: white;
             text-shadow: 2px 2px 4px #000000;
             font-size: 3em;
-            margin-top: 160px; /* Increased to make room for disco ball */
+            margin-top: 160px;
             position: relative;
             z-index: 1000;
+        }
+        .corpse {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <img class="disco-ball" src="https://i.gifer.com/XVny.gif" alt="Disco Ball">
+    <img class="disco-ball" src="data:image/jpeg;base64,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" alt="Disco Ball">
     <h1>PENGUIN</h1>
     <!-- Original Penguins -->
     <img class="penguin" src="https://web.archive.org/web/20090724051013/http://au.geocities.com/caseythebigicecube/dancingpenguin.gif" alt="Dancing Penguin">
@@ -74,23 +79,38 @@
     <img class="penguin" src="https://web.archive.org/web/20091027110121/http://www.geocities.com/lovebugdani/penguin_type_laptop_lg_nwm.gif" alt="Typing Laptop Penguin">
     <img class="penguin" src="https://web.archive.org/web/20091027125001/http://geocities.com/nan_barr_44/penguin.gif" alt="Nan Barr Penguin">
 
+    <!-- Corpse Images -->
+    <img class="corpse" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLCVYjDaDAxthqqo8-Wbkggj-LasUIie6-kQ&s" alt="Penguin Corpse">
+
     <script>
         const penguins = document.querySelectorAll('.penguin');
+        const corpseImage = document.querySelector('.corpse');
 
         function moveRandomly(penguin, speed) {
             const maxX = window.innerWidth - penguin.width;
             const maxY = window.innerHeight - penguin.height;
             const randomX = Math.random() * maxX;
             const randomY = Math.random() * maxY;
+            const randomScale = Math.random() * 0.5 + 0.5; // Random scale between 0.5 and 1
             penguin.style.transition = `all ${speed}s ease-in-out`;
             penguin.style.left = `${randomX}px`;
             penguin.style.top = `${randomY}px`;
+            penguin.style.transform = `scale(${randomScale}) rotate(0deg)`;
         }
 
         penguins.forEach((penguin, index) => {
             const speed = Math.random() * 3 + 1; // Random speed between 1 and 4 seconds
             moveRandomly(penguin, speed);
             setInterval(() => moveRandomly(penguin, speed), speed * 1000);
+
+            penguin.addEventListener('click', () => {
+                penguin.style.display = 'none';
+                const corpse = corpseImage.cloneNode();
+                corpse.style.left = penguin.style.left;
+                corpse.style.top = penguin.style.top;
+                corpse.style.display = 'block';
+                document.body.appendChild(corpse);
+            });
         });
     </script>
 </body>
